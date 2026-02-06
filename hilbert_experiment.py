@@ -1,5 +1,3 @@
-import copy
-
 def gaussian_elimination(A, b):
     n = len(A)
 
@@ -40,14 +38,13 @@ for n in dimensions:
     x_expected = [1.0] * n
     b = compute_b(H, x_expected)
 
-    H_copy = copy.deepcopy(H)
-    b_copy = copy.deepcopy(b)
+    H_copy = [[H[i][j] for j in range(n)] for i in range(n)]
+    b_copy = [b[i] for i in range(n)]
 
     x_computed = gaussian_elimination(H_copy, b_copy)
 
     error = max_error(x_computed, x_expected)
 
-    print(f"n = {n:3d} | Max error: {error:.6e}")
+    print(f"n = {n} | Max error: {error}")
     if n <= 10:
         print(f"         Solution: {[round(xi, 6) for xi in x_computed]}")
-    print()
