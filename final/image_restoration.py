@@ -4,7 +4,7 @@ from skimage import io, color
 from scipy.ndimage import convolve
 from scipy.linalg import toeplitz, solve_triangular
 
-image = io.imread("images/astronaut.jpg")
+image = io.imread("image.png")
 gray = color.rgb2gray(image)
 
 np.random.seed(42)
@@ -81,7 +81,7 @@ for ax, img, title in zip(axes, imgs, titles):
     ax.set_title(title)
     ax.axis("off")
 plt.tight_layout()
-plt.savefig("images/restoration_comparison.png", dpi=150)
+plt.savefig("../images/restoration_comparison.png", dpi=150)
 plt.show()
 
 plt.figure(figsize=(9, 5))
@@ -93,7 +93,7 @@ plt.title("Convergence of Iterative Solvers")
 plt.legend()
 plt.grid(True, which="both", alpha=0.4)
 plt.tight_layout()
-plt.savefig("images/convergence.png", dpi=150)
+plt.savefig("../images/convergence.png", dpi=150)
 plt.show()
 
 cond_unreg = np.linalg.cond(A.T @ A)
@@ -113,5 +113,5 @@ axes[1].set_title("Without regularization  (lam ~ 0)")
 axes[1].axis("off")
 plt.suptitle("Why condition number matters")
 plt.tight_layout()
-plt.savefig("images/condition_number.png", dpi=150)
+plt.savefig("../images/condition_number.png", dpi=150)
 plt.show()
