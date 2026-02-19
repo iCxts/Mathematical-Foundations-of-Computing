@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from skimage import io, color
+from skimage import io, color, transform
 from scipy.ndimage import convolve
 from scipy.linalg import toeplitz, solve_triangular
 
 image = io.imread("image.png")
+image = transform.resize(image, (300, 300), anti_aliasing=True)
 gray = color.rgb2gray(image)
 
 np.random.seed(42)
